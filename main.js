@@ -8,7 +8,19 @@ gsap.set("body", {
 
 gsap.set(".buttons", {
   css:{
-    marginTop: "20px"
+    marginTop: "20px", 
+    display: "flex",
+    justifyContent : "center"
+  }
+});
+
+gsap.set("button", {
+  css:{
+    borderRadius: "50%",
+    height: "75px",
+    width:"75px",
+    backgroundColor: "blue",
+    color: "white"
   }
 });
 
@@ -89,7 +101,7 @@ const laptop = document.querySelector("#laptop")
 const mouse = document.querySelector("#mouse")
 const book = document.querySelector("#book")
 const mug = document.querySelector("#mug")
-
+const allObjects = document.querySelector(".allObjects")
 //====HELPER FUNCTIONS
 const randomTime = random(3, 5);
 const randomTime2 = random(5, 10);
@@ -154,8 +166,82 @@ function movelong( item, direction, min, max){
   });
 }
 
-
-// EVENT LISTENER 
+// EVENT : ONCLICK
 document.querySelector("#levitate").onclick = function(){
   levitateAll();
+}
+
+document.querySelector("#stop").onclick = function(){
+  gsap.killTweensOf(laptop)
+  gsap.killTweensOf(mouse)
+  gsap.killTweensOf(monitor)
+  gsap.killTweensOf(book)
+  gsap.killTweensOf(mug)
+  gsap.killTweensOf(camera)
+  gsap.killTweensOf(phone)
+
+  gsap.to("#camera", {
+    css:{
+      position: "absolute",
+     x: "150%",
+     y: "700%",
+     rotation: 0
+    }
+  });
+  
+  gsap.to("#phone", {
+    css:{
+      position: "absolute",
+     x: "100%",
+     y: "66%",
+     scale: .35,
+     rotation: 0
+    }
+  });
+  
+  gsap.to("#monitor", {
+    css:{
+     position: "absolute",
+     x: "70%",
+     y: "34%",
+     rotation: 0
+    }
+  });
+  
+  gsap.to("#laptop", {
+    css:{
+     position: "absolute",
+     x: "210%",
+     y: "167%",
+     rotation: 0
+    }
+  });
+  
+  gsap.to("#mouse", {
+    css:{
+     position: "absolute",
+     x: "2650%",
+     y: "2572%",
+     rotation: 0
+    }
+  });
+  
+  gsap.to("#book", {
+    css:{
+     position: "absolute",
+     x: "2200%",
+     y: "2540%",  
+     scale: 1.8,
+     rotation: 0
+    }
+  });
+  gsap.to("#mug", {
+    css:{
+     position: "absolute",
+     x: "1625%",
+     y: "735%",  
+     rotation: 0
+    }
+  });
+
 }
